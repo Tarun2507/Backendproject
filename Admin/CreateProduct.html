@@ -1,0 +1,92 @@
+<html>
+<div style="display: flex;justify-content: center;">
+    <div>
+        <label for="fname">Enter product name</label><br>
+        <input style="    height: 29px;
+    width: 280px;" type="text" id="pname" name="fname" value=""><br>
+        <label for="lname">Select product type</label><br>
+        <select onchange="selectedElement(this)" id="selects">
+
+        </select><br><br>
+        <label for="lname">Enter product price</label><br>
+        <input type="text" id="price" name="lname" value=""><br><br>
+        <input id="files" type="file" onchange="changeFile(event)"> <br><br>
+        <input onclick ="CreateProduct()"type="submit" value="Submit">
+    </div>
+</div>
+
+</html>
+<script>
+    var index = 0;
+    var products=[]
+    var filecontents
+    var filename
+    var newfilename
+    var selectedProductType
+    var selel = document.getElementById('selects')
+   // localStorage.setItem("types",JSON.stringify(items))
+    var items = ['New arrivals', 'Clothes', 'Shoes', 'Handbags', 'Trends']
+    loadProds()
+    
+    function loadProds() {
+        for (var i = 0; i < items.length; i++) {
+            var opt = document.createElement("option");
+            opt.value = index;
+            opt.innerHTML = items[i]; // whatever property it has
+
+            // then append it to the select element
+            selel.appendChild(opt);
+            index++;
+        }
+    }
+    function selectedElement(e) {
+        selectedProductType = e.options[e.selectedIndex].textContent
+    }
+    function changeFile(evt) {
+        // document.getElementById('picField').onchange = function (evt) {
+        var tgt = evt.target || window.event.srcElement,
+        filename =  tgt.files[0].name
+        newfilename = filename.substring(0, filename.lastIndexOf('.'));
+        // FileReader support
+        if (FileReader && files && files.length) {
+            var fr = new FileReader();
+            fr.onload = function () {
+                // document.getElementById(outImage).src = fr.result;
+                console.log(fr.result)
+                filecontents = fr.result
+            }
+            fr.readAsDataURL(files[0]);
+        }
+
+        // Not supported
+        else {
+            // fallback -- perhaps submit the input to an iframe and temporarily store
+            // them on the server until the user's session ends.
+        }
+    }
+    function CreateProduct() {
+        var name = document.getElementById('pname').value
+        var price = document.getElementById('price').value
+      //  var desc = document.getElementById('pdesc').value
+        var type = selectedProductType
+        var contents = filecontents
+        var product = {
+            "name": name,
+           "imagename": newfilename,
+        "price": price,
+        "type": type
+        }
+        var xhttp = new XMLHttpRequest();
+xhttp.open("POST", "http://localhost:4000/items/add", true);
+xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.send(JSON.stringify(product));
+
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
+     // document.getElementById('result').value = JSON.parse(this.responseText).result
+    }
+}
+        alert('Product created')
+    }
+</script>

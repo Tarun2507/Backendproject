@@ -1,0 +1,336 @@
+<html>
+    <link rel="stylesheet" type="text/css" href="./adminhome.css">
+    <link rel="stylesheet" type="text/css" href="./header.css">    
+    <style>
+    </style>
+    <body>
+        <div style="    display: flex;
+        flex: 1;
+        height: 100%;">
+        <div class="side-bar">
+            <div class="side-bar-header">
+                <img style=" width: 53px;
+                height: 53px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUrnmr3CB1oDs0WqiWPzNxENXCnRE-1yKVKw&usqp=CAU" class="logo">
+            </div>
+            <div class="user">
+              <div class="online">
+                <img class="profile-img" style="    width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 100%;" src="https://www.bootstrapdash.com/demo/azia/v1.0.0/img/faces/face1.jpg">
+              </div>
+              <div class="media-body">  
+                <h6 style="font-weight: 700;
+                font-size: 14px;
+                color: #1c273c;
+                margin-bottom: 2px;">Tarun Reddy</h6>
+                <span style="display: block;
+                color: #7987a1;">Admin</span>
+              </div>
+            </div>
+            <div class="sidebar-body">
+                <ul style="display: flex;
+                flex-wrap: wrap;
+                padding-left: 0;
+                margin-bottom: 0;
+                list-style: none;flex-direction: column;">
+                <li style="text-transform: uppercase;
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: .5px;
+                color: #7987a1;
+                padding-bottom: 5px;
+                border-bottom: 1px dotted #cdd4e0;">Main menu</li>
+                 <li style="display: flex;
+                 position: relative;
+                 align-items: cepnter;
+                 margin-bottom: 5px;
+             ">
+                     <img style="    width: 25px;
+                     height: 25px;
+                     margin-right: 5px;" src="https://cdn0.iconfinder.com/data/icons/octicons/1024/dashboard-512.png">
+                    Dashboard
+                 </li>
+                <li onclick = "window.location.href='./CreateProduct.html' " style="display: flex;
+                position: relative;
+                align-items: center;
+                margin-bottom: 5px;
+            ">
+                    <img style="    width: 25px;
+                    height: 25px;
+                    margin-right: 5px;" src="https://static.thenounproject.com/png/1923825-200.png">
+                    Create product
+                </li>
+                <li onclick = "window.location.href='./products.html' "  style="display: flex;
+                position: relative;
+                align-items: center;
+                margin-bottom: 5px;
+            ">
+                    <img style="    width: 25px;
+                    height: 25px;
+                    margin-right: 5px;" src="https://static.thenounproject.com/png/1923825-200.png">
+                    Products
+                </li>
+                
+            </ul>
+            </div>
+
+        </div>
+        <div class="dashboard">
+            <div class="headers">
+                <img src="https://cdn4.iconfinder.com/data/icons/website-library/32/hamburger_List_hamburger_right_menu_website-512.png" class="logo">
+                <div class="search">
+                    <div class="image-wrapper">
+                        <img onclick="hideandshow()" style="width: 15.7px;
+                        height: 15.7px;background: #f5f5f6;
+                        border: 1px solid #f5f5f6;" src="./search.png">
+              
+                       </div>
+                    <input placeholder="Search for order" class="input-css">
+             
+                </div>
+                <div class="profile">
+                  <div style="position: relative;display: inline-flex;">
+                    <img onclick="hideandshow()" class="profile-image" src="./profile.png">
+                    <ul id="ull"
+                    style="cursor: pointer;position: absolute;top: 100%;left: -80px;z-index: 1000;display: none;float: left;min-width: 100px;padding: 5px 9px;margin: 2px 0 0;font-size: 14px;text-align: left;list-style: none;background-color: #fff;-webkit-background-clip: padding-box;background-clip: padding-box;border: 1px solid #ccc;border: 1px solid rgba(0,0,0,.15);border-radius: 4px;-webkit-box-shadow: 0 6px 12px rgb(0 0 0 / 18%);box-shadow: 0 6px 12px rgb(0 0 0 / 18%);cursor: pointer;/* position:absolute; *//* top:-6px; *//* right:-8px; *//* width: 16px; *//* height:16px; */">
+                    <li onclick="window.location.href='./orders.html'"> View orders </li>
+                    <li onclick="logoutfrom()"> Logout </li>
+                </ul>
+                    </div>
+                    <img class="profile-image" src="./bag.png">
+                </div>
+            </div>
+            <div style="display: flex;flex: 1;background-color: #fff;padding-left: 15px;padding-right: 15px;flex-direction: column;" class="dashboard-body">
+                <div style="color: #5a5c69!important;
+                font-size: 1.75rem;
+                padding-bottom: 15px;
+                display: flex;">Dashboard</div>
+                <div style="display: flex;">
+                    <div style="display: flex;flex: 25%;max-width: 25%;padding-right: .75rem;
+                    padding-left: .75rem;">
+                        <div style="position: relative;
+                        display: flex;
+                        flex: 1;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid #e3e6f0;
+                        border-radius: .35rem;
+                        height: 102px;
+                        border-left: .25rem solid #4e73df!important;
+                        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;">
+                    <div style="    font-size: 0.75rem;
+                    line-height: 2rem;
+                    font-weight: 500;
+                    letter-spacing: 0.1666666667em;
+                    color: #757575 !important;
+                    text-decoration: none;
+                    text-transform: uppercase;">Total Revenue</div>
+                       320$ </div>
+                    </div>
+                    <div style="display: flex;flex: 25%;max-width: 25%;padding-right: .75rem;
+                    padding-left: .75rem;">
+                        <div style="position: relative;
+                        display: flex;
+                        flex: 1;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid #e3e6f0;
+                        border-radius: .35rem;
+                        height: 102px;
+                        border-left: .25rem solid #36b9cc!important;
+                        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;">
+                          <div style="    font-size: 0.75rem;
+                          line-height: 2rem;
+                          font-weight: 500;
+                          letter-spacing: 0.1666666667em;
+                          color: #757575 !important;
+                          text-decoration: none;
+                          text-transform: uppercase;">InTransit orders</div>
+                    1
+                        </div>
+                    </div>
+                    <div style="display: flex;flex: 25%;max-width: 25%;padding-right: .75rem;
+                    padding-left: .75rem;">
+                        <div style="position: relative;
+                        display: flex;
+                        flex: 1;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid #e3e6f0;
+                        border-radius: .35rem;
+                        height: 102px;
+                        border-left: .25rem solid #f6c23e!important;
+                        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;">
+                        <div style="    font-size: 0.75rem;
+                        line-height: 2rem;
+                        font-weight: 500;
+                        letter-spacing: 0.1666666667em;
+                        color: #757575 !important;
+                        text-decoration: none;
+                        text-transform: uppercase;">Delivered orders</div>
+                        2</div>
+                    </div>
+                    <div style="display: flex;flex: 25%;max-width: 25%;padding-right: .75rem;
+                    padding-left: .75rem;">
+                        <div style="position: relative;
+                        display: flex;
+                        flex: 1;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid #e3e6f0;
+                        border-radius: .35rem;
+                        height: 102px;
+                        border-left: .25rem solid #1cc88a!important;
+                        box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;">
+                        <div style="    font-size: 0.75rem;
+                        line-height: 2rem;
+                        font-weight: 500;
+                        letter-spacing: 0.1666666667em;
+                        color: #757575 !important;
+                        text-decoration: none;
+                        text-transform: uppercase;">Ready for shipment </div>
+                        0</div>
+                    </div>
+                </div>
+                <div style="display: flex; margin-top: 25px;">
+                <div style="display: flex;flex: 1;box-shadow: 0 .15rem 1.75rem 0 rgba(58,59,69,.15)!important;">
+                    <div style="position: relative;
+                    display: flex;
+                    flex: 1;
+                    flex-direction: column;
+                    justify-content: center;
+                    min-width: 0;
+                    word-wrap: break-word;
+                    background-color: #fff;
+                    background-clip: border-box;
+                    border: 1px solid #e3e6f0;
+                    border-radius: .35rem;
+                    height: 407px;">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        <canvas id="myChart" width="800" height="400"></canvas>
+                    </div>
+                    </div>
+                </div>
+          
+                </div>
+            </div>
+          
+        </div>
+       
+</div>
+
+    </body>
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+   // Chart.defaults.scale.gridLines.display = false;
+   function hideandshow() {
+        document.getElementById('ull').style.display = 'block'
+    }
+    function logoutfrom() {
+        window.location.href = "./login.html"
+    }
+    var ctx = document.getElementById("myChart");
+var myChart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ["InTransit","Delivered","Pending","Ready for shipment"],
+    datasets: [{
+      label: 'Orders',
+      data: [1,2,1,0],
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+      ],
+      borderColor: [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: false,
+    scales: {
+      xAxes: [{
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        },
+          gridLines: {
+            display : false,
+            linewidth : 0,
+          offsetGridLines: true // à rajouter
+        }
+      },
+      {
+        position: "top",
+        ticks: {
+          maxRotation: 90,
+          minRotation: 80
+        },
+        gridLines: {
+            drawOnChartArea: false,
+          offsetGridLines: true // et matcher pareil ici
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        },
+        gridLines: {
+            linewidth : 0,
+            drawOnChartArea: false,
+          offsetGridLines: true // à rajouter
+        }
+      }]
+    }
+  }
+});
+var ctx2 = document.getElementById("myChart2").getContext('2d');
+
+
+var myChart2 = new Chart(ctx2, {
+    type: 'line',
+    data: {
+        labels: ["InTransit","Delivered orders","Ready for shipment"],
+        datasets: [{
+            label: 'Series 1', // Name the series
+            data: [2,3,4], // Specify the data values array
+            fill: false,
+            borderColor: '#2196f3', // Add custom color border (Line)
+            backgroundColor: '#2196f3', // Add custom color background (Points and Fill)
+            borderWidth: 1 // Specify bar border width
+        }]},
+    options: {
+      responsive: true, // Instruct chart js to respond nicely.
+      maintainAspectRatio: false, // Add to prevent default behaviour of full-width/height 
+    }
+});
+</script>

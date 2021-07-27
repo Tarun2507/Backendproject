@@ -1,0 +1,81 @@
+
+<div id="dvTable">
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+var products = new Array();
+$(function () {
+   
+        //Build an array containing Customer records.
+        
+        products.push(["Product Id", "Name", "Price","Type","Action"]);
+        var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://localhost:4000/items", true);
+xhr.onload = function (e) {
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+      formatData(xhr.responseText);
+     
+    } else {
+      console.error(xhr.statusText);
+    }
+  }
+};
+xhr.onerror = function (e) {
+  console.error(xhr.statusText);
+};
+xhr.send(null);
+        
+        //Create a HTML Table element.
+        
+    });
+    function loadProducts() 
+    {
+        var table = $("<table />");
+        table[0].border = "1";
+ 
+        //Get the count of columns.
+        var columnCount = products[0].length;
+ 
+        //Add the header row.
+        var row = $(table[0].insertRow(-1));
+        for (var i = 0; i < columnCount; i++) {
+            var headerCell = $("<th />");
+            headerCell.html(products[0][i]);
+            row.append(headerCell);
+        }
+ 
+        //Add the data rows.
+        for (var i = 1; i < products.length; i++) {
+            row = $(table[0].insertRow(-1));
+            for (var j = 0; j < columnCount; j++) {
+                var cell = $("<td />");
+                cell.html(products[i][j]);
+                row.append(cell);
+            }
+        }
+ 
+        var dvTable = $("#dvTable");
+        dvTable.html("");
+        dvTable.append(table);
+    }
+    function formatData(responses) {
+        var response = JSON.parse(responses)
+        for(var i=0;i<response.length;i++) {
+            products.push([response[i]._id,response[i].name,response[i].price,response[i].type,"<button onclick='deleteItem()'> Delete </button>"])
+        }
+        loadProducts()
+    }
+   function deleteItem() {
+       el = event.currentTarget;
+    var id = el.parentElement.parentElement.firstElementChild.innerText
+    el.parentElement.parentElement.remove()
+
+    fetch('http://localhost:4000/items/' + id, {
+  method: 'DELETE',
+})
+.then(res => res.text()) // or res.json()
+.then(res => console.log(res))
+   }
+</script>
